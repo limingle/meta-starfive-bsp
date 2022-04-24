@@ -1,0 +1,11 @@
+# short-description: Create SD card image for Starfive Visionfile V1 development board
+
+#part /boot --source bootimg-partition --ondisk mmcblk0 --fstype=vfat --label boot --active --size=100M --align 1024
+#part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label root --align 4096 --size 1G
+
+part /boot --source bootimg-partition --use-uuid --fstype=vfat --label boot --active --extra-space 10M --align 1024
+part / --source rootfs --use-uuid --fstype=ext4 --label root --align 4096 --extra-space 10M
+
+#part /boot --source bootimg-partition --use-uuid --fstype=vfat --label boot --active --size=100M --align 1024
+#part / --source rootfs --use-uuid --fstype=ext4 --label root --exclude-path=home/ --align 4096 --size 1G
+#part /home --source rootfs --rootfs-dir=${IMAGE_ROOTFS}/home --use-uuid --fstype=ext4 --label home --align 4096 --size 2G
